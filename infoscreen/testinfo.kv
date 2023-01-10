@@ -1,0 +1,143 @@
+# 56, 40, 81
+#:import MDRaisedButton kivymd.uix.button.MDRaisedButton
+
+MDScreen:
+    md_bg_color:218/255, 254/255, 227/255, 1
+    MDBoxLayout:
+        size_hint_y:.01
+        # padding:dp(25)
+        orientation:"vertical"
+        size_hint: [.9, .9]
+        pos_hint: { 'top' : .95, 'right': .95}
+        MDLabel:
+            text:"Điền thông tin cá nhân"
+            # text_size: root.width, None
+            font_size:"30sp"
+            color: (228/255, 95/255, 43/255, 1)
+            halign:'center'
+            # valign: 'top'
+            # padding: dp(25)
+            bold: True
+
+        ScrollView:
+            MDGridLayout:
+                
+                rows:5
+                padding:[dp(15),dp(15),dp(15),dp(50)]
+                spacing:dp(40)
+
+                MDTextField:
+                    mode: "fill"
+                    hint_text: "Họ và tên:"
+                    helper_text:"Nhập đầy đủ họ và tên"
+                    helper_text_mode: "on_focus"
+                    # required: True
+
+
+                MDGridLayout:
+                    rows:2
+                    size_hint_y:.10
+                    col_default_width: self.width/3
+                    adaptive_height: True
+
+                    MDLabel:
+                        text:"Giới tính:"   
+                        
+
+                    MDGridLayout:
+                        # size_hint_y:.001
+                        cols:3
+                        col_default_width: self.width/3
+                        adaptive_height: True
+                        # md_bg_color: app.theme_cls.primary_color
+                        padding:[dp(15),dp(15),dp(15),dp(5)]
+
+                        MDGridLayout:
+                        # size_hint_y:.001
+                            cols:2
+                            # col_default_width: self.width/3
+                            adaptive_height: True
+
+                            MDCheckbox:
+                                size_hint: None, None
+                                size: "48dp", "48dp"
+                                pos_hint: {'center_x': .5, 'center_y': .5}  
+                                group: 'sex'
+                                color: [228/255, 95/255, 43/255, 1]
+
+                            MDLabel:
+                                text:"Nam"
+
+                        MDGridLayout:
+                        # size_hint_y:.001
+                            cols:2
+                            # col_default_width: self.width/3
+                            adaptive_height: True
+
+                            MDCheckbox:
+                                size_hint: None, None
+                                size: "48dp", "48dp"
+                                pos_hint: {'center_x': .5, 'center_y': .5}  
+                                group: 'sex'
+                                color: [228/255, 95/255, 43/255, 1]
+
+
+                            MDLabel:
+                                text:"Nữ"
+
+                        MDGridLayout:
+                        # size_hint_y:.001
+                            cols:2
+                            # col_default_width: self.width/3
+                            adaptive_height: True
+
+                            MDCheckbox:
+                                size_hint: None, None
+                                size: "48dp", "48dp"
+                                pos_hint: {'center_x': .5, 'center_y': .5}  
+                                group: 'sex'
+                                color: [228/255, 95/255, 43/255, 1]
+
+                            MDLabel:
+                                text:"Khác"
+
+                MDTextField:
+                    mode: "fill"
+                    hint_text: "Mã số:"
+                    helper_text:"Nhập mã số bệnh nhân"
+                    helper_text_mode: "on_focus"
+                    # required: True
+
+                MDTextField:
+                    mode: "fill"
+                    hint_text: "Số điện thoại:"
+                    helper_text:"Nhập số điện thoại của bạn"
+                    helper_text_mode: "on_focus"
+                    input_filter:'int'
+                    # required: True
+
+                MDTextField:
+                    mode: "fill"
+                    hint_text: "Ngày xét nghiệm:"
+                    helper_text:"Chọn ngày bạn xét nghiệm"
+                    helper_text_mode: "on_focus"
+                    # required: True
+
+        MDGridLayout:
+            size_hint_y:.10
+            rows:2
+            padding:[dp(15),dp(15),dp(15),dp(50)]
+            spacing:dp(40)
+            adaptive_height: True
+
+            MDRaisedButton:
+                text: "Xác nhận"
+                md_bg_color: 246/255, 196/255, 69/255, 1
+                size: 30, 50
+                size_hint: 1, 1
+
+            MDRaisedButton:
+                text: "Trở về"
+                md_bg_color: 114/255, 250/255, 147/255, 1
+                size: 30, 50
+                size_hint: 1, 1
