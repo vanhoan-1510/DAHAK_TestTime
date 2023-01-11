@@ -1,0 +1,399 @@
+ScreenManager:
+    MainScreen:
+    PatientInfomationScreen:
+    # MedicalRecordScreen:
+    #     name: 'medicalrecord'
+    #     id: medicalrecord
+
+    NavigationBar:
+        name: 'navigationbar'
+        id: navigationbar
+
+    StaffInfoScreen:
+
+
+
+<MainScreen>:
+    # MDScreen:
+    name: 'mainscreen'
+    MDFloatLayout:
+        md_bg_color:218/255, 254/255, 227/255, 1
+        FitImage:
+            source:"images/mainbackground.jpg"
+        MDLabel:
+            text:"TRA CỨU \n   THỜI GIAN \n      XÉT NGHIỆM"
+            font_size:"40sp"
+            color: (228/255, 95/255, 43/255, 1)
+            pos_hint: {'center_x': .55, 'center_y': .8}
+            halign:'left'
+            bold: True
+
+
+        MDGridLayout:
+            rows: 2
+            size_hint: .5, .07
+            pos_hint: {'center_x': .5, 'center_y': .3}
+            spacing: "40dp"
+
+
+            MDRaisedButton:
+                text:"Nhân viên bệnh viện"
+                text_color:[0,0,0,1]
+                md_bg_color:[160/255, 229/255, 72/255, 1]
+                size: 30, 50
+                size_hint: 1, 1
+                on_release: root.manager.current = 'staff_information'
+
+            MDRaisedButton:
+                text:"Bệnh nhân đến khám"
+                text_color:[0,0,0,1]
+                md_bg_color:[246/255, 196/255, 69/255, 1]
+                size: 30, 50
+                size_hint: 1, 1
+                on_release: root.manager.current = 'information'
+
+
+<PatientInfomationScreen>:
+    # MDScreen:
+    name: 'information'
+    MDFloatLayout:
+        md_bg_color:218/255, 254/255, 227/255, 1
+        MDLabel:
+            text:"ĐIỀN THÔNG TIN CÁ NHÂN"
+            font_size:"28sp"
+            color: (228/255, 95/255, 43/255, 1)
+            pos_hint: {'center_x': .5, 'center_y': .93}
+            halign:'center'
+            valign:'top'
+            bold: True
+
+        MDGridLayout:
+            rows: 5
+            pos_hint: {'center_x': .5, 'center_y': .4}
+            padding: ("20dp", "15dp", "20dp", "15dp")
+            spacing: "40dp"
+            MDTextField:
+                mode: "fill"
+                hint_text: "Họ và tên:"
+                helper_text:"Nhập đầy đủ họ và tên"
+                helper_text_mode: "on_focus"
+                # required: True
+
+            MDGridLayout:
+                rows:2
+                # size_hint_y:.01
+                col_default_width: self.width/3
+                adaptive_height: True
+                spacing:dp(10)
+
+                MDLabel:
+                    text:"Giới tính:"   
+
+                MDGridLayout:
+                    # size_hint_y:.001
+                    cols:3
+                    col_default_width: self.width/3
+                    adaptive_height: True
+                    # md_bg_color: app.theme_cls.primary_color
+                    # padding:[dp(15),dp(15),dp(15),dp(5)]
+
+                    MDGridLayout:
+                    # size_hint_y:.001
+                        cols:2
+                        # col_default_width: self.width/3
+                        adaptive_height: True
+
+                        MDCheckbox:
+                            size_hint: None, None
+                            size: "48dp", "48dp"
+                            pos_hint: {'center_x': .5, 'center_y': .5}  
+                            group: 'sex'
+                            color: [228/255, 95/255, 43/255, 1]
+
+                        MDLabel:
+                            text:"Nam"
+
+                    MDGridLayout:
+                    # size_hint_y:.001
+                        cols:2
+                        # col_default_width: self.width/3
+                        adaptive_height: True
+
+                        MDCheckbox:
+                            size_hint: None, None
+                            size: "48dp", "48dp"
+                            pos_hint: {'center_x': .5, 'center_y': .5}  
+                            group: 'sex'
+                            color: [228/255, 95/255, 43/255, 1]
+
+                        MDLabel:
+                            text:"Nữ"
+
+                    MDGridLayout:
+                    # size_hint_y:.001
+                        cols:2
+                        # col_default_width: self.width/3
+                        adaptive_height: True
+
+                        MDCheckbox:
+                            size_hint: None, None
+                            size: "48dp", "48dp"
+                            pos_hint: {'center_x': .5, 'center_y': .5}  
+                            group: 'sex'
+                            color: [228/255, 95/255, 43/255, 1]
+
+                        MDLabel:
+                            text:"Khác"
+
+            MDTextField:
+                mode: "fill"
+                hint_text: "Mã số:"
+                helper_text:"Nhập mã số bệnh nhân"
+                helper_text_mode: "on_focus"
+                # required: True
+
+            MDTextField:
+                mode: "fill"
+                hint_text: "Số điện thoại:"
+                helper_text:"Nhập số điện thoại của bạn"
+                helper_text_mode: "on_focus"
+                input_filter:'int'
+                # required: True
+
+            MDTextField:
+                id: 'date_text_field'
+                mode: "fill"
+                hint_text: "Ngày xét nghiệm:"
+                helper_text:"Chọn ngày bạn xét nghiệm"
+                helper_text_mode: "on_focus"
+                write_tab: False
+                on_focus: app.show_date_picker()    
+                # required: True
+
+        MDGridLayout:
+            cols: 2
+            size_hint: .5, .07
+            pos_hint: {'center_x': .5, 'center_y': .1}
+            spacing: "40dp"
+
+            MDRaisedButton:
+                text: "Trở về"
+                text_color: 0, 0, 0, 1
+                md_bg_color: 114/255, 250/255, 147/255, 1
+                size: 30, 50
+                on_release: root.manager.current = 'mainscreen'
+
+            MDRaisedButton:
+                text: "Xác nhận"
+                text_color: 0, 0, 0, 1
+                md_bg_color: 246/255, 196/255, 69/255, 1
+                size: 30, 50
+                on_release: root.manager.current = 'navigationbar'
+
+<NavigationBar>:
+    name: "navigationbar"
+    id: navigationbar
+
+    MDBottomNavigation:
+        # color: stuff
+        id: bottom_nav
+        panel_color: 114/255, 250/255, 147/255, 1
+
+        MDBottomNavigationItem:
+            name: 'medicalrecord'
+            id: medicalrecord
+            text: "Cá nhân"
+            icon: 'account-circle'
+
+            MDFloatLayout:
+                md_bg_color:218/255, 254/255, 227/255, 1
+                MDLabel:
+                    text:"Hồ Sơ Khám Bệnh" 
+                    font_size:"30sp"
+                    color: (228/255, 95/255, 43/255, 1)
+                    pos_hint: {'center_x': .5, 'center_y': .95}
+                    halign:'center'
+                    valign:'top'
+                    bold: True                    
+                
+
+
+                MDGridLayout:
+                    cols: 2
+                    size_hint: .6, .07
+                    pos_hint: {'center_x': .3, 'center_y': .1}
+                    padding: ('50dp', '10dp', '50dp', '25dp')
+                    spacing: "130dp"
+                    MDRaisedButton:
+                        text: "Trở về"
+                        text_color: 0,0,0,1
+                        md_bg_color: 114/255, 250/255, 147/255, 1
+                        size: 30, 50
+                        on_release: root.manager.current = 'information'
+
+                    MDRaisedButton:
+                        text: "Bản đồ"
+                        text_color: 0,0,0,1
+                        md_bg_color: 114/255, 250/255, 147/255, 1
+                        size: 30, 50
+                    # size_hint: .5, .07
+                    # pos_hint: {'center_x': .5, 'center_y': .1}
+                    
+
+        MDBottomNavigationItem:
+            name: 'screen 2'
+            text: "Dịch vụ khác"
+            icon: 'room-service'
+
+            MDLabel:
+                text: "Other Service"
+                halign: 'center'
+                color: (228/255, 95/255, 43/255, 1)
+
+        MDBottomNavigationItem:
+            name: 'screen 3'
+            text: "Tư vấn"
+            icon: 'account-question'
+
+            MDLabel:
+                text: "future"
+                halign: 'center'
+                color: (228/255, 95/255, 43/255, 1)
+
+
+        MDBottomNavigationItem:
+            name: 'screen 4'
+            text: "Hotline"
+            icon: 'phone'
+
+            MDLabel:
+                text: "Nếu có bất kì thắc mắc nào\nVui lòng liên hệ đường dây nóng\n1900****"
+                halign: 'center'
+                color: (228/255, 95/255, 43/255, 1)
+
+<StaffInfoScreen>:
+    # MDScreen:
+    name: 'staff_information'
+    MDFloatLayout:
+        md_bg_color:218/255, 254/255, 227/255, 1
+        MDLabel:
+            text:"ĐIỀN THÔNG TIN CÁ NHÂN"
+            font_size:"28sp"
+            color: (228/255, 95/255, 43/255, 1)
+            pos_hint: {'center_x': .5, 'center_y': .93}
+            halign:'center'
+            valign:'top'
+            bold: True
+
+        MDGridLayout:
+            rows: 4
+            pos_hint: {'center_x': .5, 'center_y': .4}
+            padding: ("20dp", "15dp", "20dp", "15dp")
+            spacing: "40dp"
+            MDTextField:
+                mode: "fill"
+                hint_text: "Họ và tên:"
+                helper_text:"Nhập đầy đủ họ và tên"
+                helper_text_mode: "on_focus"
+                # required: True
+
+            MDGridLayout:
+                rows:2
+                # size_hint_y:.01
+                col_default_width: self.width/3
+                adaptive_height: True
+                spacing:dp(10)
+
+                MDLabel:
+                    text:"Giới tính:"   
+
+                MDGridLayout:
+                    # size_hint_y:.001
+                    cols:3
+                    col_default_width: self.width/3
+                    adaptive_height: True
+                    # md_bg_color: app.theme_cls.primary_color
+                    # padding:[dp(15),dp(15),dp(15),dp(5)]
+
+                    MDGridLayout:
+                    # size_hint_y:.001
+                        cols:2
+                        # col_default_width: self.width/3
+                        adaptive_height: True
+
+                        MDCheckbox:
+                            size_hint: None, None
+                            size: "48dp", "48dp"
+                            pos_hint: {'center_x': .5, 'center_y': .5}  
+                            group: 'sex'
+                            color: [228/255, 95/255, 43/255, 1]
+
+                        MDLabel:
+                            text:"Nam"
+
+                    MDGridLayout:
+                    # size_hint_y:.001
+                        cols:2
+                        # col_default_width: self.width/3
+                        adaptive_height: True
+
+                        MDCheckbox:
+                            size_hint: None, None
+                            size: "48dp", "48dp"
+                            pos_hint: {'center_x': .5, 'center_y': .5}  
+                            group: 'sex'
+                            color: [228/255, 95/255, 43/255, 1]
+
+                        MDLabel:
+                            text:"Nữ"
+
+                    MDGridLayout:
+                    # size_hint_y:.001
+                        cols:2
+                        # col_default_width: self.width/3
+                        adaptive_height: True
+
+                        MDCheckbox:
+                            size_hint: None, None
+                            size: "48dp", "48dp"
+                            pos_hint: {'center_x': .5, 'center_y': .5}  
+                            group: 'sex'
+                            color: [228/255, 95/255, 43/255, 1]
+
+                        MDLabel:
+                            text:"Khác"
+
+            MDTextField:
+                mode: "fill"
+                hint_text: "Mã số:"
+                helper_text:"Nhập mã số nhân viên"
+                helper_text_mode: "on_focus"
+                # required: True
+
+            MDTextField:
+                mode: "fill"
+                hint_text: "Số điện thoại:"
+                helper_text:"Nhập số điện thoại của bạn"
+                helper_text_mode: "on_focus"
+                input_filter:'int'
+                # required: True
+
+        MDGridLayout:
+            cols: 2
+            size_hint: .5, .07
+            pos_hint: {'center_x': .5, 'center_y': .1}
+            spacing: "40dp"
+
+            MDRaisedButton:
+                text: "Trở về"
+                text_color: 0, 0, 0, 1
+                md_bg_color: 114/255, 250/255, 147/255, 1
+                size: 30, 50
+                on_release: root.manager.current = 'mainscreen'
+
+            MDRaisedButton:
+                text: "Xác nhận"
+                text_color: 0, 0, 0, 1
+                md_bg_color: 246/255, 196/255, 69/255, 1
+                size: 30, 50
+                on_release: root.manager.current = 'navigationbar'

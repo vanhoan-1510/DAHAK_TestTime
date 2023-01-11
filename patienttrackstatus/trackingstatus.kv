@@ -1,0 +1,22 @@
+# 56, 40, 81
+#:import MDRaisedButton kivymd.uix.button.MDRaisedButton
+
+MDScreen:
+    name: "medicalrecord"
+    MDFloatLayout:
+        md_bg_color:218/255, 254/255, 227/255, 1
+        MDLabel:
+            text:"THEO DÕI TÌNH TRẠNG XÉT NGHIỆM CỦA BỆNH NHÂN" 
+            font_size:"30sp"
+            color: (228/255, 95/255, 43/255, 1)
+            pos_hint: {'center_x': .5, 'center_y': .9}
+            halign:'center'
+            valign:'top'
+            bold: True
+
+        MDRaisedButton:
+            text: "Trở về"
+            md_bg_color: 114/255, 250/255, 147/255, 1
+            size: 30, 50
+            size_hint: .5, .07
+            pos_hint: {'center_x': .5, 'center_y': .1}

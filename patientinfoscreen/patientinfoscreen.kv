@@ -2,42 +2,30 @@
 #:import MDRaisedButton kivymd.uix.button.MDRaisedButton
 
 MDScreen:
-    md_bg_color:218/255, 254/255, 227/255, 1
-    MDBoxLayout:
-        size_hint_y:.01
-        # padding:dp(25)
-        orientation:"vertical"
-        size_hint: [.95, .95]   
-        pos_hint: { 'top' : 1.2, 'right': .98, 'bottom:': .9 }
-        padding: 0
-        
+    id: 'info'
+
+    MDFloatLayout:
+        md_bg_color:218/255, 254/255, 227/255, 1
         MDLabel:
-            text:"Điền thông tin cá nhân"
-            # text_size: root.width, None
-            font_size:"30sp"
+            text:"ĐIỀN THÔNG TIN CÁ NHÂN"
+            font_size:"28sp"
             color: (228/255, 95/255, 43/255, 1)
+            pos_hint: {'center_x': .5, 'center_y': .93}
             halign:'center'
-            # pos_hint: {'center_x': .5, 'center_y': .95}
-            # valign: 'top'
-            # padding: dp(25)
+            valign:'top'
             bold: True
 
         MDGridLayout:
-            
-            rows:5
-            # padding:[dp(0),dp(15),dp(15),dp(15)]
-            padding: 10
-            spacing:dp(30)
-            # size_hint: [.95, .95]  
-            # pos_hint: { 'top' : .95, 'right': .95}
-
+            rows: 5
+            pos_hint: {'center_x': .5, 'center_y': .4}
+            padding: ("20dp", "15dp", "20dp", "15dp")
+            spacing: "40dp"
             MDTextField:
                 mode: "fill"
                 hint_text: "Họ và tên:"
                 helper_text:"Nhập đầy đủ họ và tên"
                 helper_text_mode: "on_focus"
                 # required: True
-
 
             MDGridLayout:
                 rows:2
@@ -48,7 +36,6 @@ MDScreen:
 
                 MDLabel:
                     text:"Giới tính:"   
-                    
 
                 MDGridLayout:
                     # size_hint_y:.001
@@ -128,21 +115,57 @@ MDScreen:
                 helper_text_mode: "on_focus"
                 # required: True
 
-    MDGridLayout:
-        size_hint_y:2
-        rows:2
-        padding:[dp(15),dp(15),dp(15),dp(30)]
-        spacing:dp(20)
-        adaptive_height: True
+        MDGridLayout:
+            cols: 2
+            size_hint: .5, .07
+            pos_hint: {'center_x': .5, 'center_y': .1}
+            spacing: "40dp"
 
-        MDRaisedButton:
-            text: "Xác nhận"
-            md_bg_color: 246/255, 196/255, 69/255, 1
-            size: 30, 50
-            size_hint: 1, 1
+            MDRaisedButton:
+                text: "Trở về"
+                md_bg_color: 114/255, 250/255, 147/255, 1
+                size: 30, 50
 
-        MDRaisedButton:
-            text: "Trở về"
-            md_bg_color: 114/255, 250/255, 147/255, 1
-            size: 30, 50
-            size_hint: 1, 1
+            MDRaisedButton:
+                text: "Trở về"
+                md_bg_color: 114/255, 250/255, 147/255, 1
+                size: 30, 50
+
+        MDBottomNavigation:
+            #color stuff
+            #panel_color: 0,0,1,1
+
+            MDBottomNavigationItem:
+                name: 'person_info'
+                text: "Cá nhân"
+                icon: 'account-circle'
+                # on_press: medicalrecord()
+                on_release: medicalrecord()
+
+            MDBottomNavigationItem:
+                name: 'screen 2'
+                text: "Dịch vụ khác"
+                icon: 'room-service'
+
+                MDLabel:
+                    text: "Python"
+                    halign: 'center'
+
+            MDBottomNavigationItem:
+                name: 'screen 3'
+                text: "Tư vấn"
+                icon: 'account-question'
+
+                MDLabel:
+                    text: "Codemy YouTube Channel Rocks!"
+                    halign: 'center'
+
+
+            MDBottomNavigationItem:
+                name: 'screen 4'
+                text: "Hotline"
+                icon: 'phone'
+
+                MDLabel:
+                    text: "My Instagram:\nrealjohnelder"
+                    halign: 'center'
